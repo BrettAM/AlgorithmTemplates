@@ -1,11 +1,11 @@
 import scala.io.Source
 
 object Solver {
-    type Input = Int
-    //returns the remaining lines and one input; t will not be Nil
+    type Input = ()
+    //return remaining input and one parsed out problem; t will not be Nil
     def parseInput(t: List[String]): (List[String], Input) = {
         val first = t.head.split(' ').map(x => x.toInt)
-        val input = first.head
+        val input = ()
         (t.drop(1), input)
     }
 
@@ -35,6 +35,7 @@ object Solver {
         val source = Source.fromFile(ifname).getLines().toList.drop(1)
         //get input prepends as it recurses, resulting in a reversed list
         val input  = getInput(source, Nil).reverse
+        //change to "input.par" if you are feeling adventurous
         val output = input.map(problem => doProblem(problem))
         output.seq.zipWithIndex foreach { case(a,i) => display(i+1, a) }
     }
