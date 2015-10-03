@@ -1,7 +1,7 @@
 import scala.io.Source
 
 object Solver {
-    type Input = ()
+    type Input = Unit
     //return remaining input and one parsed out problem; t will not be Nil
     def parseInput(t: List[String]): (List[String], Input) = {
         val first = t.head.split(' ').map(x => x.toInt)
