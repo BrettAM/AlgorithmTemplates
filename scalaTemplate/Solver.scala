@@ -23,18 +23,18 @@ object Solver {
     }
 
     def main(args: Array[String]) {
-        def getInput(l: List[String], v: Seq[Input]): Seq[Input] = {
+        def splitInput(l: List[String], v: Seq[Input]): Seq[Input] = {
             if(l == Nil) v
             else {
                 val (remaining, input) = parseInput(l)
-                getInput(remaining, input +: v)
+                splitInput(remaining, input +: v)
             }
         }
         val ifname = if(args.length >= 1) args(0) else "input.txt"
         //dropped line is the "T test cases follow" line
         val source = Source.fromFile(ifname).getLines().toList.drop(1)
         //get input prepends as it recurses, resulting in a reversed list
-        val input  = getInput(source, Nil).reverse
+        val input  = splitInput(source, Nil).reverse
         //change to "input.par" if you are feeling adventurous
         val output = input.map(problem => doProblem(problem))
         output.seq.zipWithIndex foreach { case(a,i) => display(i+1, a) }
