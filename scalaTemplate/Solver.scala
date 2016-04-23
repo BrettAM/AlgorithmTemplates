@@ -17,13 +17,12 @@ object Solver {
     }
 
     def display(i :Int, a :Any, os: Seq[PrintStream]) {
-        for(s <- os){
-            s.print(s"Case #$i: ")
-            s.println(a match {
-                case d: Double => "%1.7f" format d
-                case a         => a.toString
-            })
+        def jamFormat(obj: Any): String = obj match {
+            case d: Double => "%1.7f" format d
+            case s: Seq[_] => s.map(jamFormat).mkString(" ")
+            case a         => a.toString
         }
+        os.foreach(_.print(s"Case #$i: ${jamFormat(a)}"))
     }
 
     def splitInput(l: Seq[String], v: Seq[Input]): Seq[Input] = {
