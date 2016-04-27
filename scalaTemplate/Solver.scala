@@ -1,5 +1,6 @@
 import scala.io.Source
 import java.io.PrintStream
+import Math._
 
 object Solver {
     type Input = Unit
