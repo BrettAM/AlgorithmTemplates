@@ -22,7 +22,7 @@ object Solver {
             case s: Seq[_] => s.map(jamFormat).mkString(" ")
             case a         => a.toString
         }
-        os.foreach(_.print(s"Case #$i: ${jamFormat(a)}"))
+        os.foreach(_.println(s"Case #$i: ${jamFormat(a)}"))
     }
 
     def splitInput(l: Seq[String], v: Seq[Input]): Seq[Input] = {

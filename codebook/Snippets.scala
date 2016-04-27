@@ -10,8 +10,7 @@ object Snippets{
       */
     def search(l: Int, r: Int)(implicit lt: Int=>Boolean):Int = {
         val m = (l+r)/2
-        println(s"Looking at $m between $l and $r")
-        if(m == l || m == r) m
+        if(m == l || m == r) r
         else {
             if(lt(m)) search(l, m)
             else search(m, r)
