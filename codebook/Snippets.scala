@@ -16,4 +16,17 @@ object Snippets{
             else search(m, r)
         }
     }
+
+    /** Find the greatest common divisor of two longs */
+    def gcd(r: Long, s: Long): Long = {
+        if (s == 0) r
+        else gcd(s, r%s)
+    }
+
+    /** Find the least common multiple of a and b */
+    def lcm(a: Long, b: Long): Long = a*b/gcd(a,b)
+
+    /** find the log of a in an arbitrary base */
+    def logb(a: Double, b: Double): Double = Math.log(a)/Math.log(b)
+
 }
