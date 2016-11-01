@@ -9,11 +9,11 @@ object Snippets{
       * Finds the lowest value where lt == false
       */
     def search(l: Int, r: Int)(implicit lt: Int=>Boolean):Int = {
-        val m = (l+r)/2
-        if(m == l || m == r) r
+        if(l > r) l
         else {
-            if(lt(m)) search(l, m)
-            else search(m, r)
+            val m = (l+r)/2
+            if(lt(m)) search(m+1, r)
+            else search(l, m-1)
         }
     }
 
